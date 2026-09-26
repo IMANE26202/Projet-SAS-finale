@@ -70,6 +70,16 @@ function AjouterNouveau() {
             // bublble sort
             for(i = 0; i < candidats.length - 1; i++){
                 for(j = 0; j < electeurs.length - 1 - i; j++){
+                    if ( candidats [j].electeurs.length < candidats[j+1].electeurs.lenght){
+                        let temp = candidats[j];
+                        candidats [j] = candidats [j+1];
+                        candidats[j+1] = temp;
+                    }
+                }
+            }
+             AfficherTousLesCandidats();
+        
+           
 
                     
 
