@@ -30,10 +30,10 @@ function AjouterCandidat() {
 
        })
 
-
-function AjouterNouveau() {
+}
+function AjouterPlusieurCandidatsAlafois() {
     
-    n = Number(p("combien  candidats tu veux ajouter : "));
+    n = Number(p("combien de candidats tu veux ajouter : "));
     for (let i = 0; i < n; i++) {
        console.log(`\n ======= candidate ${i+1} =========== \n`)
 
@@ -60,35 +60,61 @@ function AjouterNouveau() {
     }
 
 }
-    function Afficher () {
+    
+function AfficherListeCandidats (candidats) {
 
-        // 1 : choix tri
-        // 2 : choix parti politic
-        let choix = p("enter a number ")
+        console.log("1.Afficher les candidats par ordre décroissant  ");
+        console.log("2.Afficher uniquement les candidats d'un parti politique spécifique ");
+        let choix = Number(p("enter a number :"));
 
-        if(choix == 1 ){
-            // bublble sort
-            for(i = 0; i < candidats.length - 1; i++){
-                for(j = 0; j < electeurs.length - 1 - i; j++){
-                    if ( candidats [j].electeurs.length < candidats[j+1].electeurs.lenght){
-                        let temp = candidats[j];
-                        candidats [j] = candidats [j+1];
-                        candidats[j+1] = temp;
+        switch (choix) {
+            case 1:
+                    for(let i = 0; i < candidats.length - 1; i++){
+                         for(let j = 0; j < candidats.length -1 - i ; j++){
+                            if ( candidats[j].electeurs.length < candidats[j+1].electeurs.length){
+                                 let temp = candidats[j];
+                                 candidats [j] = candidats [j+1];
+                                 candidats[j+1] = temp;
+                            }
+                        }
                     }
-                }
+                     console.log("\n---Candidats trié par ordre décroissant de vote---");
+                    for (let i = 0; i < candidats.length; i++) {
+                             console.log('CIN : ',candidats[i].cin);
+                             console.log('Nom : ',candidats[i].nom);
+                             console.log('Prenom : ',candidats[i].prenom);
+                             console.log('PartiPolitique  :',candidats[i].partiPolitique);
+                             console.log('Age :',candidats[i].age);
+                             console.log('Electeurs : ',candidats[i].electeurs);
+                             console.log(` =============================== \n`)
+                        }
+                         break;
+            case 2:
+               let partiPolitique = p(" Entrer votre parti Politique:")
+                 console.log("\n---Candidats Filtrer par parti politique spécifique---");
+
+              for(i=0; i < candidats.length; i++){ 
+                    if(partiPolitique === candidats[i].partiPolitique){
+    
+                    for (let i = 0; i < candidats.length; i++) {
+                             console.log('CIN : ',candidats[i].cin);
+                             console.log('Nom : ',candidats[i].nom);
+                             console.log('Prenom : ',candidats[i].prenom);
+                             console.log('PartiPolitique  :',candidats[i].partiPolitique);
+                             console.log('Age :',candidats[i].age); 
+                             console.log('Nombre de vote',candidats[i].electeurs.length)
+                             console.log(` =============================== \n`)
+                    }
+                    }
+
+             }  
             }
-             AfficherTousLesCandidats();
-        
-           
+        }
+function VoterPourUnCandidat  ()  {
+         
+} 
 
-                    
-
-                }
-            }
-
-      
-      
-    }
+    
 do {
 
     console.log("\n ===================================\n")
@@ -105,13 +131,13 @@ do {
     choix = Number(p("entrer votre choix : "));
 switch (choix) { 
     case 1 :
-        AjouterNouveau() ;
+        AjouterCandidat() 
         break;
      case 2 :
-       ;
+        AjouterPlusieurCandidatsAlafois()
         break;
      case 3 :
-        console.log("afficher la liste des candidats.") ;
+        AfficherListeCandidats(candidats)
         break;
      case 4 :
         console.log("voter pour un candidat.") ;
@@ -135,3 +161,4 @@ switch (choix) {
  } while (choix !== 0){
 
  }
+ 
