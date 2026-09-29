@@ -125,13 +125,12 @@ function AfficherListeCandidats(candidats) {
             }
             break;
         case 2:
-            let partiPolitique = p(" Entrer votre parti Politique:")
+            let parti_Politique = p(" Entrer votre parti Politique:")
             console.log("\n---Candidats Filtrer par parti politique spécifique---");
 
             for (i = 0; i < candidats.length; i++) {
-                if (partiPolitique === candidats[i].partiPolitique) {
+                if (parti_Politique == candidats[i].partiPolitique) {
 
-                    for (let i = 0; i < candidats.length; i++) {
                         console.log('CIN : ', candidats[i].cin);
                         console.log('Nom : ', candidats[i].nom);
                         console.log('Prenom : ', candidats[i].prenom);
@@ -140,7 +139,7 @@ function AfficherListeCandidats(candidats) {
                         console.log('Nombre de vote', candidats[i].electeurs.length)
                         console.log(` =============================== \n`)
                     }
-                }
+                
 
             }
     }
@@ -152,23 +151,19 @@ function VoterPourUnCandidat() {
 
     for (let i = 0; i < candidats.length; i++) {
 
-
         let electeurs = candidats[i].electeurs;
-
         for (let j = 0; j < electeurs.length; j++) {
             if (electeurs[j] == cinElecteur) {
-                alreadyVote = true
+                alreadyVote = true;
                 console.log("Vous avez déjà voté et vous navez pas le droit de modifier votre vote ni de voter à nouveau ")
-                break
+                return;
+
+              }
 
             }
 
         }
 
-        if (alreadyVote) {
-            console.log("Vous avez déjà voté.");
-            return;
-        }
 
         let cinCandidat = p("Veuillez saisir le CIN du candidat : ");
         for (let i = 0; i < candidats.length; i++) {
@@ -181,7 +176,7 @@ function VoterPourUnCandidat() {
         }
         console.log("Candidat introuvable.");
 
-    }
+    
 }
 
 
@@ -217,11 +212,13 @@ function ModifierLesinformationsCandidats() {
 }
 function SupprimerUnCandidat() {
     let cin = p("Veuiller entrer votre CIN:");
-    let trouve = false
+    let trouve = false;
     for (let i = 0; i < candidats.length; i++) {
         if (candidats[i].cin == cin) {
             candidats.splice(i, 1)
             trouve = true
+            console.log("Le candidat a été supprimé avec succès" );
+            break;      
 
         }
     }
