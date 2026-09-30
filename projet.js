@@ -243,7 +243,7 @@ function RechercherDesCandidats() {
 
   
     if (!trouve) {
-        console.log("Ce candidats est introuvable..")
+        console.log("Ce candidats est introuvable.")
     }
 }
 
