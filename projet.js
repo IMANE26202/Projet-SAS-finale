@@ -69,6 +69,7 @@ function AjouterCandidat() {
         electeurs: electeurs
 
     })
+     console.log("Candidat ajouté avec succès.")
 
 }
 function AjouterPlusieurCandidatsAlafois() {
@@ -95,6 +96,7 @@ function AjouterPlusieurCandidatsAlafois() {
             electeurs: electeurs
 
         })
+          console.log("Candidats ajouté avec succès.")
 
 
     }
