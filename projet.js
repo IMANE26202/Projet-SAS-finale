@@ -43,10 +43,15 @@ let n;
 
 function AjouterCandidat() {
 
-    n = Number(p(" ajouter un candidat : "));
-
-
     let cin = p("Entrer votre CIN :");
+    for(i=0; i<candidats.length; i++){
+        if(cin == candidats[i].cin){
+            console.log("Vous ne pouvez pas ajouter ce candidat car il est dèja exister")
+            return;
+        }
+        
+    }
+         
     let nom = p("Entrer votre Nom : ");
     let prenom = p("Entrer votre Prénom :");
     let partiPolitique = p("Entrer votre partiPolitique :");
@@ -69,7 +74,7 @@ function AjouterCandidat() {
 function AjouterPlusieurCandidatsAlafois() {
 
     n = Number(p("combien de candidats tu veux ajouter : "));
-    for (let i = 0; i < n; i++) {
+      for (let i = 0; i < n; i++) {
         console.log(`\n ======= candidate ${i + 1} =========== \n`)
 
         let cin = p("Entrer votre CIN :");
@@ -128,7 +133,7 @@ function AfficherListeCandidats(candidats) {
             let parti_Politique = p(" Entrer votre parti Politique:")
             console.log("\n---Candidats Filtrer par parti politique spécifique---");
 
-            for (i = 0; i < candidats.length; i++) {
+            for (let i = 0; i < candidats.length; i++) {
                 if (parti_Politique == candidats[i].partiPolitique) {
 
                         console.log('CIN : ', candidats[i].cin);
@@ -189,23 +194,23 @@ function ModifierLesinformationsCandidats() {
     for (let i = 0; i < candidats.length; i++) {
         if (candidats[i].cin == cin) {
 
-            let nouveauParti = p("Etrer votre parti politique");
-            let nouveauAge = p("Entrer votre age");
+            let nouveauParti = p("Veuiller entrer votre nouvelle parti politique: ");
+            let nouveauAge = p("Veuiller entrer votre nouveau age: ");
 
             candidats[i].partiPolitique = nouveauParti
             candidats[i].age = nouveauAge
             
             
             trouve = true
-            console.log("Modification effectuer avec succes")
-            console.log("candidat après modification ")
+            console.log("Modification effectuer avec succes.")
+            console.log("candidat après modification: ")
             console.log(candidats[i])
 
         }
 
     }
     if (!trouve) {
-        console.log("Cette cin n'existe pas")
+        console.log("Cette CIN n'existe pas.")
         return;
     }
 
@@ -217,17 +222,17 @@ function SupprimerUnCandidat() {
         if (candidats[i].cin == cin) {
             candidats.splice(i, 1)
             trouve = true
-            console.log("Le candidat a été supprimé avec succès" );
+            console.log("Le candidat a été supprimé avec succès." );
             break;      
 
         }
     }
     if (!trouve) {
-        console.log("Cette cin n'existe pas")
+        console.log("Cette CIN n'existe pas.")
     }
 }
 function RechercherDesCandidats() {
-    let nom = p("Veuiller entrer votre Nom");
+    let nom = p("Veuiller entrer le nom du candidat: ");
     let trouve = false
     for (let i = 0; i < candidats.length; i++) {
         if (candidats[i].nom.toLowerCase() == nom.toLowerCase()) {
@@ -238,7 +243,7 @@ function RechercherDesCandidats() {
 
   
     if (!trouve) {
-        console.log("Ce candidats est introuvable")
+        console.log("Ce candidats est introuvable..")
     }
 }
 
